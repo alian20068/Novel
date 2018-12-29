@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorInk">
+
+    <ImageView
+        android:id="@+id/ivStart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorInk" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/White"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
