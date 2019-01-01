@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,12 @@ import android.widget.ImageView;
  * 新手引导页
  */
 
-public class GuiderActivity extends Activity{
+public class GuiderActivity extends Activity implements View.OnTouchListener {
+
+    private static final String TAG="GuiderActivity";
 
     //定义常量 引导页图片
-    private final int[] arrGuider={R.drawable.guider1, R.drawable.guider2, R.drawable.guider3};
+    private final int[] arrGuider={R.drawable.guider1, R.drawable.guider2, R.drawable.guider3,R.drawable.guider4};
     private ViewPager vpGuider=null;
 
     @Override
@@ -60,6 +63,8 @@ public class GuiderActivity extends Activity{
                 //添加到容器
                 container.addView(iv);
 
+                Log.d(TAG,"添加第"+(position+1)+"页");
+
                 return iv;
             }
 
@@ -67,14 +72,15 @@ public class GuiderActivity extends Activity{
             public void destroyItem(ViewGroup container, int position, Object object) {
                 //super.destroyItem(container, position, object);
 
+                Log.d(TAG,"移除第"+(position+1)+"页");
+
                 //从容器里移除
                 container.removeView((View) object);
             }
         });
 
         //当用户在最后一个页面滑动时，需要跳转到程序的主页面
-
-
+        vpGuider.setOnTouchListener(this);
     }
 
     //跳转到主页
@@ -82,5 +88,16 @@ public class GuiderActivity extends Activity{
         Intent itMain=new Intent(this,MainActivity.class);
         startActivity(itMain);
         finish();
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        switch (motionEvent.getAction()){
+            case  MotionEvent.ACTION_UP:
+                Log.d(TAG,"这是抬起操作");
+                break;
+        }
+
+        return false;
     }
 }
